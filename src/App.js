@@ -1,7 +1,9 @@
 import React from "react";
+import { Switch, Route } from "react-router-dom";
 
 import Header from "./components/header/header.component";
-import Directory from "./components/directory/directory.component";
+import HomePage from "./pages/homepage/homepage.component";
+import LoginPage from "./pages/login/login.component";
 
 // import logo from './logo.svg';
 import GlobalStyles from "./style-utils/global.styles";
@@ -17,7 +19,10 @@ function App() {
       <OuterContainer>
         <InnerContainer>
           <Header />
-          <Directory />
+          <Switch>
+            <Route exact path="/" component={HomePage}></Route>
+            <Route exact path="/login" component={LoginPage}></Route>
+          </Switch>
         </InnerContainer>
       </OuterContainer>
     </>
