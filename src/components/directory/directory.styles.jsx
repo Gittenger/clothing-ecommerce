@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import { FlexCenter, device } from "../../style-utils/utils.styles";
+import { device } from "../../style-utils/utils.styles";
 
 const { laptop, tablet, mobile } = device;
 

@@ -8,6 +8,14 @@ export const HeaderContainer = styled.header`
   width: 100%;
   height: 6rem;
   background: dodgerblue;
+
+  a {
+    transition: all 0.3s;
+
+    &:hover {
+      color: red;
+    }
+  }
 `;
 
 export const Nav = styled.nav`
