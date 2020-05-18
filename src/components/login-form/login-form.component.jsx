@@ -41,6 +41,7 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
           name="email"
           label="email"
           value={email}
+          placeholder="Email address"
           required
         />
         <input
@@ -49,6 +50,7 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
           name="password"
           label="password"
           value={password}
+          placeholder="Password"
           required
         />
         <div>
