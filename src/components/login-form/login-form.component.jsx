@@ -1,8 +1,13 @@
 import React, { useState } from "react";
+import { connect } from "react-redux";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../redux/user/user.actions";
 
 import { LoginFormContainer } from "./login-form.styles";
 
-const LoginForm = () => {
+const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
     email: "",
     password: "",
@@ -12,8 +17,7 @@ const LoginForm = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log("submitted");
+    emailSignInStart(email, password);
   };
 
   const handleChange = (e) => {
@@ -46,14 +50,22 @@ const LoginForm = () => {
           label="password"
           value={password}
           required
-        />{" "}
+        />
         <div>
           <button type="submit">Sign in</button>
-          <button>Sign in with Google</button>
+          <button type="button" onClick={googleSignInStart}>
+            Sign in with Google
+          </button>
         </div>
       </form>
     </LoginFormContainer>
   );
 };
 
-export default LoginForm;
+const mapDispatchToProps = (dispatch) => ({
+  googleSignInStart: () => dispatch(googleSignInStart()),
+  emailSignInStart: (email, password) =>
+    dispatch(emailSignInStart({ email, password })),
+});
+
+export default connect(null, mapDispatchToProps)(LoginForm);

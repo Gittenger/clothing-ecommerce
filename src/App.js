@@ -1,5 +1,9 @@
-import React from "react";
-import { Switch, Route } from "react-router-dom";
+import React, { useEffect } from "react";
+import { Switch, Route, Redirect } from "react-router-dom";
+import { connect } from "react-redux";
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "./redux/user/user.selectors";
+import { checkUserSession } from "./redux/user/user.actions";
 
 import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
@@ -12,7 +16,12 @@ import {
   InnerContainer,
 } from "./components/container/container.styles";
 
-function App() {
+function App({ currentUser, checkUserSession }) {
+  //automatic sign in
+  useEffect(() => {
+    checkUserSession();
+  }, [checkUserSession]);
+
   return (
     <>
       <GlobalStyles />
@@ -21,7 +30,11 @@ function App() {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage}></Route>
-            <Route exact path="/login" component={LoginPage}></Route>
+            <Route
+              exact
+              path="/login"
+              render={() => (currentUser ? <Redirect to="/" /> : <LoginPage />)}
+            ></Route>
           </Switch>
         </InnerContainer>
       </OuterContainer>
@@ -29,4 +42,12 @@ function App() {
   );
 }
 
-export default App;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  checkUserSession: () => dispatch(checkUserSession()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
