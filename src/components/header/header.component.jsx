@@ -1,9 +1,14 @@
 import React from "react";
+import { connect } from "react-redux";
 import { Link } from "react-router-dom";
+
+import { createStructuredSelector } from "reselect";
+import { selectCurrentUser } from "../../redux/user/user.selectors";
+import { signOutStart } from "../../redux/user/user.actions";
 
 import { HeaderContainer, Nav } from "./header.styles";
 
-const Header = () => (
+const Header = ({ currentUser, signOutStart }) => (
   <HeaderContainer>
     <div>
       <Link to="/">Logo</Link>
@@ -20,11 +25,25 @@ const Header = () => (
           <Link to="/checkout">Checkout</Link>
         </li>
         <li>
-          <Link to="/login">Login</Link>
+          {currentUser ? (
+            <Link to="/" onClick={signOutStart}>
+              Log out
+            </Link>
+          ) : (
+            <Link to="/login">Login</Link>
+          )}
         </li>
       </ul>
     </Nav>
   </HeaderContainer>
 );
 
-export default Header;
+const mapStateToProps = createStructuredSelector({
+  currentUser: selectCurrentUser,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  signOutStart: () => dispatch(signOutStart()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header);
