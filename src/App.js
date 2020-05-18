@@ -7,6 +7,7 @@ import { checkUserSession } from "./redux/user/user.actions";
 
 import Header from "./components/header/header.component";
 import HomePage from "./pages/homepage/homepage.component";
+import ShopPage from "./pages/shop/shop.component";
 import LoginPage from "./pages/login/login.component";
 
 // import logo from './logo.svg';
@@ -30,6 +31,7 @@ function App({ currentUser, checkUserSession }) {
           <Header />
           <Switch>
             <Route exact path="/" component={HomePage}></Route>
+            <Route exact path="/shop" component={ShopPage}></Route>
             <Route
               exact
               path="/login"
