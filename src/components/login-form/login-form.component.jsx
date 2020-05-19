@@ -7,6 +7,7 @@ import {
 
 import FormComponent from "../form-component/form-component.component";
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
 
 const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -54,11 +55,11 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
           placeholder="Password"
           required
         />
-        <div>
-          <button type="submit">Sign in</button>
-          <button type="button" onClick={googleSignInStart}>
+        <div className="button-group">
+          <Button type="submit">Sign in</Button>
+          <Button type="button" onClick={googleSignInStart} googleSignIn>
             Sign in with Google
-          </button>
+          </Button>
         </div>
       </form>
     </FormComponent>

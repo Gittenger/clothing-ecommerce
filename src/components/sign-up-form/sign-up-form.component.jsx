@@ -4,6 +4,7 @@ import { signUpStart } from "../../redux/user/user.actions";
 
 import FormComponent from "../form-component/form-component.component";
 import FormInput from "../form-input/form-input.component";
+import Button from "../button/button.component";
 
 const SignUpForm = ({ signUpStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -76,7 +77,9 @@ const SignUpForm = ({ signUpStart }) => {
           placeholder="Confirm password"
           required
         />
-        <button type="submit">Sign Up</button>
+        <div className="button-group">
+          <Button type="submit">Sign Up</Button>
+        </div>
       </form>
     </FormComponent>
   );
