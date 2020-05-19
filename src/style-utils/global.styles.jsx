@@ -15,6 +15,8 @@ body {
     background-color: ${({ theme: { colors } }) => colors.white};
     color: ${({ theme: { colors } }) => colors.black};
     font-size: 1.8rem;
+    font-family: 'Cairo', sans-serif;
+    line-height: 1.2;
     display: flex;
     flex-direction: column;
     align-items: center;

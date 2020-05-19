@@ -62,7 +62,7 @@ export function* onGoogleSignInStart() {
 // SIGN UP
 export function* signUp({ payload: { displayName, email, password } }) {
   try {
-    const { user } = auth.createUserWithEmailAndPassword(email, password);
+    const { user } = yield auth.createUserWithEmailAndPassword(email, password);
     yield put(signUpSuccess({ user, additionalData: { displayName } }));
   } catch (err) {
     yield put(signUpFailure(err));

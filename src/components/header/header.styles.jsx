@@ -16,10 +16,25 @@ export const HeaderContainer = styled.header`
       color: red;
     }
   }
+
+  div:first-child {
+    ${FlexCenter}
+    padding-left: 2rem;
+    height: 7rem;
+
+    a {
+      height: 100%;
+
+      img {
+        height: 100%;
+      }
+    }
+  }
 `;
 
 export const Nav = styled.nav`
   width: 60%;
+  padding-right: 2rem;
 
   ul {
     ${FlexCenter}

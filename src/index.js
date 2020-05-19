@@ -10,7 +10,7 @@ import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
 
-import theme from "./style-utils/theme.styles";
+import theme from "./style-utils/theme.styles.js";
 import "./index.css";
 
 ReactDOM.render(

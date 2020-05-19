@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { connect } from "react-redux";
 import { signUpStart } from "../../redux/user/user.actions";
 
-import { SignUpFormContainer } from "./sign-up-form.styles";
+import FormComponent from "../form-component/form-component.component";
+import FormInput from "../form-input/form-input.component";
 
 const SignUpForm = ({ signUpStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -35,11 +36,11 @@ const SignUpForm = ({ signUpStart }) => {
   };
 
   return (
-    <SignUpFormContainer>
+    <FormComponent>
       <h2>Don't have an account?</h2>
-      <div>Sign up today.</div>
+      <p>Sign up today.</p>
       <form onSubmit={handleSubmit}>
-        <input
+        <FormInput
           type="text"
           name="displayName"
           value={displayName}
@@ -48,7 +49,7 @@ const SignUpForm = ({ signUpStart }) => {
           placeholder="Display name"
           required
         />
-        <input
+        <FormInput
           type="email"
           name="email"
           value={email}
@@ -57,7 +58,7 @@ const SignUpForm = ({ signUpStart }) => {
           placeholder="Email address"
           required
         />
-        <input
+        <FormInput
           type="password"
           name="password"
           value={password}
@@ -66,7 +67,7 @@ const SignUpForm = ({ signUpStart }) => {
           placeholder="Password"
           required
         />
-        <input
+        <FormInput
           type="password"
           name="confirmPassword"
           value={confirmPassword}
@@ -77,7 +78,7 @@ const SignUpForm = ({ signUpStart }) => {
         />
         <button type="submit">Sign Up</button>
       </form>
-    </SignUpFormContainer>
+    </FormComponent>
   );
 };
 

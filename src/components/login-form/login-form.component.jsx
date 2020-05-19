@@ -5,7 +5,8 @@ import {
   googleSignInStart,
 } from "../../redux/user/user.actions";
 
-import { LoginFormContainer } from "./login-form.styles";
+import FormComponent from "../form-component/form-component.component";
+import FormInput from "../form-input/form-input.component";
 
 const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
   const [userCredentials, setCredentials] = useState({
@@ -30,12 +31,12 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
   };
 
   return (
-    <LoginFormContainer>
+    <FormComponent>
       <h2>Already have an account? Sign in here.</h2>
-      <div>Sign in with your email and password.</div>
+      <p>Sign in with your email and password.</p>
 
       <form onSubmit={handleSubmit}>
-        <input
+        <FormInput
           onChange={handleChange}
           type="email"
           name="email"
@@ -44,7 +45,7 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
           placeholder="Email address"
           required
         />
-        <input
+        <FormInput
           onChange={handleChange}
           type="password"
           name="password"
@@ -60,7 +61,7 @@ const LoginForm = ({ googleSignInStart, emailSignInStart }) => {
           </button>
         </div>
       </form>
-    </LoginFormContainer>
+    </FormComponent>
   );
 };
 

@@ -6,12 +6,15 @@ import { createStructuredSelector } from "reselect";
 import { selectCurrentUser } from "../../redux/user/user.selectors";
 import { signOutStart } from "../../redux/user/user.actions";
 
+import LogoImg from "../../assets/npm.svg";
 import { HeaderContainer, Nav } from "./header.styles";
 
 const Header = ({ currentUser, signOutStart }) => (
   <HeaderContainer>
     <div>
-      <Link to="/">Logo</Link>
+      <Link to="/">
+        <img src={LogoImg} alt="" />
+      </Link>
     </div>
     <Nav>
       <ul>
